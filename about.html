@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Complex Visualization Project">
+    <meta name="author" content="Evan Carraway">
+    <link rel="icon" href="https://www.gwu.edu/sites/all/themes/gwu_marketing/favicon.ico">
+    <title>Complex Visualization</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	 <!-- Main navigation bar -->
+	 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="index.html">Complex Visualization</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Publication Types</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="universities.html">Universities</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="subjects.html">Subjects</a>
+          </li>
+		  <li class="nav-item active">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="jupyter.html">Notebook</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="https://github.com/epcarraway/project5">Source Code</a>
+          </li>
+        </ul>
+		<form class="form-inline my-2 my-lg-0">
+			<a class="navbar-brand" href="index.html">Scientific and Research Publishing on Digital Platforms</a>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Main Chart Title Area -->
+    <main role="main">
+	  <!-- Main text body -->
+      <div class="container" style="padding-top:30px;">
+       <h3>Objective</h3>
+			<p>While the development of new technologies has increased in the last century, so too has the rate of scientific publications and research. The past several years has seen an explosive increase in the rate of scientific publishing from 1% and 2% in the 19th and 20th centuries respectively, to nearly 10% this decade (Bornmann, 2014). While the printing press led to the emergence and growth of print scientific journals in past centuries, today digital publishing occurs on platforms such as Figshare, Dryad and Zenodo (Hannay, 2014). This project seeks to visually show the growth and other key aspects of digital publishing platforms.
+			</p>
+			
+			<h3>Assumptions and Questions</h3>
+			<p>What can we tell about academia and the research world through the mining of publication data? Have topics studied stayed the same over the past two decades and have the places where that research takes place and how it is presented shifted as well? This visualization project will study this.
+			</p>
+			
+			<h3>Tools Used</h3>
+			<p>The project is presented in the form of an interactive <a href="index.html">HTML page</a> using CSS, JavaScript, JQuery, D3.js, Leaflet, DataTable and other applicable visualization libraries. It also leveraged a custom <a href="jupyter.html">Jupyter notebook</a> with Python, Pandas, BeautifulSoup, and the Requests library for retrieval and processing and use <a href="https://developers.zenodo.org/?shell#oai-pmh">Zenodo's open access Open Archives Initiative (AOI) XML interface</a> for retrieving structured metadata about publications. Source code management and hosting leveraged GitHub.
+			</p>
+			<h3>References</h3>
+			<p>Bornmann, Lutz, Mutz, & Ruediger. (2014, May 08). Growth rates of modern science: A bibliometric analysis based on the number of publications and cited references. Retrieved July 29, 2019, from https://arxiv.org/abs/1402.4578</p>
+			<p>CERN (Zenodo). (n.d.). About Zenodo. Retrieved July 29, 2019, from http://about.zenodo.org/</p>
+			<p>Hannay, T. (2014, August 05). Stop the deluge of science research. Retrieved July 29, 2019, from https://www.theguardian.com/higher-education-network/blog/2014/aug/05/why-we-should-publish-less-scientific-research</p>
+        </div>
+        <hr>
+      </div>
+    </main>
+	<!-- Footer Area -->
+    <footer class="container">
+      <p>© Evan Carraway 2019</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/popper.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</body></html>

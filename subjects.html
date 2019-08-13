@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Complex Visualization Project">
+    <meta name="author" content="Evan Carraway">
+    <link rel="icon" href="https://www.gwu.edu/sites/all/themes/gwu_marketing/favicon.ico">
+    <title>Complex Visualization</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+	
+	<!-- Hover Tip CSS -->
+    <link rel="stylesheet" href="css/d3-tip.css" />
+	
+	<!-- UI Slider CSS -->
+	<link rel="stylesheet" href="css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>  
+            
+		   
+  </head>
+
+  <body>
+	<!-- Load the D3 visualization libraries  -->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+	<!-- Set default arguments and build year/month list-->
+	<script type="text/javascript">
+		var yearStart = 2007;
+		var yearEnd = 2019;
+		var firstDate = '2007-07'
+		var lastDate = '2019-07'
+		var allDates = [];
+		while(yearStart < yearEnd+1){
+			var tempYear = yearStart
+			monthStart = 1
+			while(monthStart < 13){
+				var tempMonth = ("00" + monthStart).substring(("00" + monthStart).length - 2, ("00" + monthStart).length);
+				var tempDate = yearStart + "-" + tempMonth
+				if (tempDate <= lastDate && tempDate >= firstDate) {allDates.push(yearStart + "-" + tempMonth);};
+				monthStart++
+			};
+			yearStart++;
+		}
+	</script>
+	
+	 <!-- Main navigation bar -->
+	 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="index.html">Complex Visualization</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Publication Types</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="universities.html">Universities</a>
+          </li>
+		  <li class="nav-item active">
+            <a class="nav-link" href="subjects.html">Subjects</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+		<form class="form-inline my-2 my-lg-0">
+			<a class="navbar-brand" href="index.html">Scientific and Research Publishing on Digital Platforms</a>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Main Chart Title Area -->
+    <main role="main">
+      <div class="jumbotron1">
+        <div class="container">
+		  <div class="row" style="text-align:center;padding-top:5px;vertical-align:middle">
+			<div class="col-xs-6 col-md-4" style="vertical-align:middle;padding-top:15px;">
+				<button id="play-button" class="btn btn-primary btn-lg">Play</button>
+				<button id="reset-button" class="btn btn-secondary btn-lg">Reset</button>
+			</div>
+			<div class="col-xs-6 col-md-4" style="vertical-align:middle">
+				<div id="slider-div">
+					<label>Month: <span id="month">2007-07</span></label>
+					<div id="date-slider"></div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-4" style="vertical-align:middle">
+				<div id="slider-div-2">
+					<label>Number of Subjects to Show: <span id="n">20</span></label>
+					<div id="n-slider"></div>
+				</div>
+			</div>
+		  </div><!-- row -->
+          <h1 class="display-4" id="title_div" style="text-align:center"></h1>
+          <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 svg-container" id="total_div"></div>
+        </div>
+      </div>
+	  <div class="container">
+	   <p style="text-align:right;padding-top:5px;">** Based on unique DOIs from Zenodo.org</p>
+	  </div>
+	  <hr> 
+	  <!-- DataTable Area -->
+      <div class="container">  
+		<h3 align="center">Publication Subject Source Data</h2><br />  
+		<table id="data-table" class="display" style="width:100%">
+			<thead>
+				<tr>
+					<th>month</th>
+					<th>subject</th>
+					<th>records</th>
+					<th>total</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>month</th>
+					<th>subject</th>
+					<th>records</th>
+					<th>total</th>
+				</tr>
+			</tfoot>
+		</table>
+      </div>  
+    <hr> 
+	</main>
+	<!-- Footer Area -->
+    <footer class="container">
+      <p>© Evan Carraway 2019</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/popper.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- Custom JS -->
+    <script type="text/javascript" src="js/subjects.js"></script>
+	<script>
+		// Creates a DataTable from source JSON
+		 $(document).ready(function() {
+			$('#data-table').DataTable( {
+				ajax: {
+					url: 'data/subjects.json',
+					dataSrc: ''
+				},
+				"columns": [
+					{ "data": "month" },
+					{ "data": "subject" },
+					{ "data": "records" },
+					{ "data": "total" }
+				]
+			} );
+		} );
+	 </script> 
+</body></html>
